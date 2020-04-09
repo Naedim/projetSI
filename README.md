@@ -23,7 +23,7 @@ __L'objet était de :__
 
 **Résultat avec redimmensionnement**
 
-![Exercice-1-Redim](https://github.com/Naedim/projetSI/blob/master/ex1.gif)
+![Prise-en-main-du-projet](https://github.com/Naedim/projetSI/blob/master/ex1.gif)
 
 Aucune difficulté n'a été rencontré lors de cet exercice.
 *******************
