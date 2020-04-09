@@ -1,8 +1,8 @@
 # NOEL Damien L3CDA- SI
 Développement d’un langage spécifique pour des animations graphiques simples 
-
-+ [Exercice 1 : Prise en main du projet (#Prise-en-main-du-projet)
-+ [Exercice 2 : Première version d'un interpréteur de script](#exercice-2-première-version-dun-interpréteur-de-script)
+*******************
++ [Exercice 1 : Prise en main du projet (#Prise-en-main-du-projet)]
++ [Exercice 2 : Intepréteur de script V1](#Interpreteur-de-script-V1)
   + [Exercice 2.1 : Script de configuration](#exercice-2-1-script-de-configuration)
   + [Exercice 2.2 : Script d'animation](#exercice-2-2-script-danimation)
 + [Exercice 3 : Introductio...n des commandes](#exercice-3-introduction-des-commandes)
@@ -13,7 +13,6 @@ Développement d’un langage spécifique pour des animations graphiques simples
   + [Exercice 4.4 : Création et exécution de scripts](#exercice-4-4-création-et-exécution-de-scripts)
 *******************
 ## Exercice 1 Prise en main du projet
-Cet exercice consistait à prendre en main la couche graphique.
 
 __L'objet était de :__
   * Déplacer robi jusqu'au bord droit
@@ -24,7 +23,7 @@ __L'objet était de :__
 
 **Résultat avec redimmensionnement**
 
-![Exercice-1-Redim](https://github.com/YannAlbouy/home/blob/master/Exercice-1-redim.gif "resultat-1-redim")
+![Exercice-1-Redim](https://github.com/Naedim/projetSI/blob/master/ex1.gif)
 
 Aucune difficulté n'a été rencontré lors de cet exercice.
 *******************
