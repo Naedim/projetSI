@@ -1,18 +1,18 @@
-# Albouy Yann Licence 3 CDA - Projet de synthese de SI 
+# NOEL Damien L3CDA- SI
 Développement d’un langage spécifique pour des animations graphiques simples 
-*******************
-+ [Exercice 1 : Prise en main de la couche graphique](#exercice-1-Prise-en-main-de-la-couche-graphique)
+
++ [Exercice 1 : Prise en main du projet (#Prise-en-main-du-projet)
 + [Exercice 2 : Première version d'un interpréteur de script](#exercice-2-première-version-dun-interpréteur-de-script)
   + [Exercice 2.1 : Script de configuration](#exercice-2-1-script-de-configuration)
   + [Exercice 2.2 : Script d'animation](#exercice-2-2-script-danimation)
-+ [Exercice 3 : Introduction des commandes](#exercice-3-introduction-des-commandes)
++ [Exercice 3 : Introductio...n des commandes](#exercice-3-introduction-des-commandes)
 + [Exercice 4 : Selection et execution des commandes](#exercice-4-selection-et-execution-des-commandes)
   + [Exercice 4.1 : Réferencement des objets et enregistrement des commandes](#exercice-4-1-réferencement-des-objets-et-enregistrement-des-commandes)
   + [Exercice 4.2 : Ajout et suppression dynamique d'éléments graphiques](#exercice-4-2-ajout-et-suppression-dynamique-déléments-graphiques)
   + [Exercice 4.3 : Ajouter des éléments à des conteneurs](#exercice-4-3-ajouter-des-éléments-à-des-conteneurs)
   + [Exercice 4.4 : Création et exécution de scripts](#exercice-4-4-création-et-exécution-de-scripts)
 *******************
-## Exercice 1 Prise en main de la couche graphique
+## Exercice 1 Prise en main du projet
 Cet exercice consistait à prendre en main la couche graphique.
 
 __L'objet était de :__
