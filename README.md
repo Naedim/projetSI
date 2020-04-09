@@ -1,7 +1,7 @@
 # NOEL Damien L3CDA- SI
 Développement d’un langage spécifique pour des animations graphiques simples 
 *******************
-+ [Exercice 1 : Prise en main du projet (#Prise-en-main-du-projet)]
++ [Exercice 1 : Prise en main du projet ](#Prise-en-main-du-projet)
 + [Exercice 2 : Intepréteur de script V1](#Interpreteur-de-script-V1)
   + [Exercice 2.1 : Script de configuration](#exercice-2-1-script-de-configuration)
   + [Exercice 2.2 : Script d'animation](#exercice-2-2-script-danimation)
