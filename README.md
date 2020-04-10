@@ -244,17 +244,15 @@ public class Environment
 }
 ```
 
-**Methode Run de Reference**
+Script exécuté
 
-Permet de referencer l'objet graphique à un ensemble de commande
+```String
+- (space setColor red) 
+- (robi translate 25 25) 
+- (space sleep 2000)
+- (robi setColor black)
 ```
-public Expr run(ExprList e) {
-		String selector = e.get(1).getValue();
-		Command c = this.getCommandByName(selector);
-		if (c == null) return null;
-		return c.run(this, e);
-	}
-```
+
 
 ## Exercice 4-2 Ajout et suppression dynamique d'éléments graphiques
 Pour cette partie il a fallu créer plusieurs classes :
