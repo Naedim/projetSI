@@ -171,7 +171,7 @@ Animation de robi (script lancé dans une boucle)
 
 **Resultat de l'exécution du script**
 
-![Exercice-3-Resultat](https://github.com/YannAlbouy/home/blob/master/Exercice-3.gif "resultat-3")
+![Exercice-3-Resultat](https://github.com/Naedim/projetSI/blob/master/ex2_2.gif)
 *******************
 ## Exercice 4 Selection et execution des commandes
 
