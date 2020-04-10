@@ -568,6 +568,12 @@ public class DelScript implements Command
 
 Classe RunScript : 
 
+la méthode Run de cetet classe permet l'exécution d'un script avec les paramètres utilisés lors de la demande d'exécution d'un script :
+
+- Elle récupère une copie du script que l'on souhaite exécuter (si il existe). 
+- Elle modifie le contenu de la copie en modifiant le libellé des paramètres par les valeurs entrées lors de l'appel du script(si le 	script est valide). 
+- Pour chaque commande dans le script, elle envoie la commande à l'intepréteur, ainsi le fonctionnement du reste du programme n'est pas altéré car l'on exécute les commandes de la même manière quand dans les exercices précédents.
+
 ```java
 public class RunScript implements Command
 {
