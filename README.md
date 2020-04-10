@@ -11,7 +11,7 @@ Développement d'un programme de modélisation graphique
   + [Exercice 4.2 : Ajout et suppression dynamique d'éléments graphiques](#exercice-4-2-ajout-et-suppression-dynamique-déléments-graphiques)
   + [Exercice 4.3 : Ajouter des éléments à des conteneurs](#exercice-4-3-ajouter-des-éléments-à-des-conteneurs)
   + [Exercice 4.4 : Création et exécution de scripts](#exercice-4-4-création-et-exécution-de-scripts)  
- + [Bilan critique :Avis et améliorations](#exercice-4-selection-et-execution-des-commandes)
+ + [Bilan critique :Avis et améliorations](#bilan-critique-avis-et-am%C3%A9liorations)
 *******************
 ## Exercice 1 Prise en main du projet
 
