@@ -429,28 +429,27 @@ Commandes d'exécution
 - (space add robi (rect.class new))
 -(robi translate 130 50)
 -(robi setColor yellow)
--space add momo (oval.class new))
--momo setColor red)
--momo translate 80 80)
--space add pif (image.class new france.jpg))
--pif translate 100 0)!" + 
--space add hello (label.class new \"Hello world\"))
--hello translate 10 10) 
--hello setColor black)
--space del pif)
--space del momo)
--space del robi)
--space del hello)
+-(space add momo (oval.class new))
+-(momo setColor red)
+-(momo translate 80 80)
+-(space add pif (image.class new france.jpg))
+-(pif translate 100 0)!" + 
+-(space add hello (label.class new \"Hello world\"))
+-(hello translate 10 10) 
+-(hello setColor black)
+-(space del pif)
+-(space del momo)
+-(space del robi)
+-(space del hello)
 ```
-![Exercice-4-2-Resultat](https://github.com/YannAlbouy/home/blob/master/Exercice4-2.png "resultat-4-2")
+![Exercice-4-2-Resultat](https://github.com/Naedim/projetSI/blob/master/ex4_2.gif)
 
 ## Exercice 4-3 Ajouter des éléments à des conteneurs
 
-Modification pour que nos GContainer puissent contenir des éléements. Il suffit d'autoriser les GContainer à contenir des éléments.
-
+Modification du travail précédent pour nos GContainers puissent désormais contenir d'autres GContainers
 **Resultat lors de l'execution du script**
 
-![Exercice-4-3-Resultat](https://github.com/YannAlbouy/home/blob/master/Exercice4-3.png "resultat-4-3")
+![Exercice-4-3-Resultat](https://github.com/Naedim/projetSI/blob/master/ex4_3.gif)
 
 ## Exercice 4-4 Création et exécution de scripts
 
