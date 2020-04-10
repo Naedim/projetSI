@@ -30,7 +30,7 @@ Aucune difficulté n'a été rencontré lors de cet exercice.
 ## Exercice 2 Intepréteur de script V1
 Dans le programme, un script est représenté come une expression parenthésée appelée S-expression.
 
-Aucune difficulté n'a été rencontré lors de cet exercice.
+(Pas de difficultés rencontrées)
 
 ## Exercice 2-1 Script de configuration
 
@@ -60,7 +60,7 @@ La partie du script bougeant robi est lancé en boucle pour une bonne visualisat
 ## Exercice 3 mise en place des classes commandes
 Dans cet exercice il a fallut mettre en place les classes qui mettent en œuvre l'interface *Command*.
 
-Aucune difficulté n'a été rencontré lors de cet exercice.
+(Pas de difficultés rencontrées)
 
 Quatres classes on donc été ajouté : 
   * RobiChangeColor
