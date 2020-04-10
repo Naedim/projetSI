@@ -783,5 +783,5 @@ public class RunScript implements Command
 ## Bilan critique :Avis et améliorations
 
 Je suis plutôt satisait du travail effectué. Le programme me semble bien architecturé dans l'ensemble. 
-Ce que je souhiaterai améliorer est la manière dont je gère la suppression récursive du contenu d'un GContainer. 
+Ce que je souhaiterais améliorer est la manière dont je gère la suppression récursive du contenu d'un GContainer. 
 J'ai en effet géré l'implémentation  d'un GContainer dans un autre GContainer au sein de la classe Reference. Je trouve plus efficace, plus qualitatif d'attribuer un nouvel environnement à chaque nouveau GContainer, ce qui faciliterai la gestion du contenu d'un GContainer, notamment au niveau de la suppression récursive d'un GContainer.
