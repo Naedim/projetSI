@@ -1,7 +1,7 @@
 # NOEL Damien L3CDA- SI
 Développement d’un langage spécifique pour des animations graphiques simples 
 *******************
-+ [Exercice 1 : Prise en main du projet ](#prise-en-main-du-projet)
++ [Exercice 1 : Prise en main du projet ](#exercice-1-prise-en-main-du-projet)
 + [Exercice 2 : Intepréteur de script V1](#Interpreteur-de-script-V1)
   + [Exercice 2.1 : Script de configuration](#exercice-2-1-script-de-configuration)
   + [Exercice 2.2 : Script d'animation](#exercice-2-2-script-danimation)
@@ -27,7 +27,7 @@ __L'objet était de :__
 
 Aucune difficulté n'a été rencontré lors de cet exercice.
 *******************
-## Exercice 2 Première version d'un interpréteur de script
+## Exercice 2 Intepréteur de script V1
 Dans le programme, un script est représenté come une expression parenthésée appelée S-expression.
 
 Aucune difficulté n'a été rencontré lors de cet exercice.
@@ -41,7 +41,7 @@ Le script que l'on utilisera ici sera :
 ```
 **Resultat de l'execution du script**
 
-![Exercice-2-1-Resultat](https://github.com/YannAlbouy/home/blob/master/Exercice-2-1.png "resultat-2-1")
+![Exercice-2-1-Resultat](https://github.com/Naedim/projetSI/blob/master/ex2_1.JPG)
 
 ## Exercice 2-2 Script d'animation
 
@@ -50,6 +50,8 @@ Le script que l'on utilisera ici sera :
 ```diff
 - (script (space color white)(robi color red)(robi translate 10 0)(space sleep 100)(robi translate 0 10)(space sleep 100)(robi (translate -10 0)(space sleep 100)(robi translate 0 -10) )
 ```
+
+La partie du script bougeant robi est lancé en boucle pour une bonne visualisation du résultat
 **Resultat de l'execution du script**
 
 ![Exercice-2-2-Resultat](https://github.com/YannAlbouy/home/blob/master/Exercice-2-2.gif "resultat-2-2")
