@@ -252,7 +252,8 @@ Commandes exécutées
 - (space sleep 2000)
 - (robi setColor black)
 ```
-
+#Exécution des commandes : 
+![Exercice-4-1-Resultat](https://github.com/Naedim/projetSI/blob/master/ex4_1.gif)
 
 ## Exercice 4-2 Ajout et suppression dynamique d'éléments graphiques
 Ajout des classes AddElement, DelElement, NewImage, NewString, NewElement
