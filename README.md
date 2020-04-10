@@ -94,56 +94,65 @@ public class RobiChangeColor implements Command
 
 **Classe RobiTranslate**
 
-```
-public class RobiTranslate implements Command{
-	int x;
-	int y;
+```java
+public class RobiTranslate implements Command
+{
 	GRect robi;
-	public RobiTranslate(int x, int y, GRect r)
+	Point p;
+	
+	public RobiTranslate(GRect robi, Point p) 
 	{
-		this.x = x;
-		this.y = y;
-		this.robi = r;
+	
+		this.robi = robi;
+		this.p = p;
 	}
 	@Override
-	public void run()
+	public void run() 
 	{
-		/*Faire bouger robi */
-		robi.translate(new Point(x,y));
+		robi.translate(p);
+		
 	}
+
 }
+
 ```
 
 **Classe SpaceChangeColor**
 
-```
-public class SpaceChangeColor implements Command{
-	Color newColor;
+```java
+public class SpaceChangeColor implements Command 
+{	
 	GSpace space;
-	public SpaceChangeColor(Color newColor, GSpace s) {
+	Color newColor;
+	public SpaceChangeColor(GSpace space, Color newColor) {
+	
+		this.space = space;
 		this.newColor = newColor;
-		this.space = s;
 	}
+	
 	@Override
-	public void run() {
-		/*Changer la couleur du fond */
-		space.setColor(newColor);
+	public void run()
+	{
+		this.space.setColor(this.newColor);
 	}
 }
 ```
 
 **Classe SpaceSleep**
-```
-public class SpaceSleep implements Command{
-	int temps;
-	public SpaceSleep(int temps)
-	{
-		this.temps = temps;
+```java
+public class SpaceSleep  implements Command 
+{
+	int time;
+	
+	public SpaceSleep(int time) {
+		
+		this.time = time;
 	}
+
 	@Override
-	public void run() {
-		/*Faire un temps de pause*/
-		Tools.sleep(temps);
+	public void run() 
+	{
+		Tools.sleep(this.time);
 	}
 }
 ```
