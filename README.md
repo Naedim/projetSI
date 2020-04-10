@@ -474,7 +474,27 @@ public abstract class ContentManagement
 	}
 }
 ```
+
+**Commandes exécutées : **
+```
+-(space add robi (rect.class new))
+-(space.robi setDim 300 300)
+-(space.robi setColor yellow)
+-(space.robi add ala (rect.class new))
+-(space.robi.ala setDim 200 200)
+-(space.robi.ala setColor white)
+-(space.robi.ala add hello (label.class new \"Hello world\"))
+-(space.robi.ala.hello translate 10 10)
+-(space.robi.ala.hello setColor black)
+-(space.robi.ala add pif (image.class new france.jpg))
+-(space.robi.ala.pif translate 100 0)
+-(space.robi.ala.pif del pif)
+-(space del robi)
+```
+
+La différence dans les commandes par rapport à l'exercice précédent est que l'on supprime tous les élément en supprimant seulement robi
 **Resultat lors de l'execution des commandes**
+
 
 ![Exercice-4-3-Resultat](https://github.com/Naedim/projetSI/blob/master/ex4_3.gif)
 
