@@ -156,10 +156,17 @@ public class SpaceSleep  implements Command
 	}
 }
 ```
-**Script à executer**
+**Exécution de script**
 
-```diff
--(script (space sleep 10000)(space color blue) (robi color green) (robi translate 10 0) (space sleep 100) (robi translate 0 10) (space sleep 100) (robi translate -10 0) (space sleep 100) (robi translate 0 -10) )
+Initialisation de l'environnement comme vu prédément
+
+```
+- (script (space color white) (robi color red) )
+```
+
+Animation de robi (script lancé dans une boucle)
+```
+- (script (robi translate 10 0) (space sleep 100) (robi translate 0 10) (space sleep 100) (robi translate -10 0) (space sleep 100) (robi translate 0 -10) (space sleep 100))
 ```
 
 **Resultat de l'exécution du script**
