@@ -1,5 +1,5 @@
 # NOEL Damien L3CDA- SI
-Développement d’un langage spécifique pour des animations graphiques simples 
+Développement d'un programme de modélisation graphique 
 *******************
 + [Exercice 1 : Prise en main du projet ](#exercice-1-prise-en-main-du-projet)
 + [Exercice 2 : Intepréteur de script V1](#exercice-2-intepr%C3%A9teur-de-script-v1)
