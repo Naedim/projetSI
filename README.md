@@ -475,7 +475,7 @@ public abstract class ContentManagement
 }
 ```
 
-**Commandes exécutées : **
+Commandes exécutées :
 ```
 -(space add robi (rect.class new))
 -(space.robi setDim 300 300)
@@ -493,21 +493,283 @@ public abstract class ContentManagement
 ```
 
 La différence dans les commandes par rapport à l'exercice précédent est que l'on supprime tous les élément en supprimant seulement robi
-**Resultat lors de l'execution des commandes**
+
+**Resultat lors de l'execution des commandes
 
 
 ![Exercice-4-3-Resultat](https://github.com/Naedim/projetSI/blob/master/ex4_3.gif)
 
 ## Exercice 4-4 Création et exécution de scripts
 
-Mise en place de la possibilité d'exécution de scripts prenant en compte des para
+Mise en place de la possibilité d'exécution de scripts à paramètres
 
-J'ai rencontré des difficultés pour l'execution des scripts.
+(J'ai eu des difficultés à comprendre le fonctionnement des scripts, je n'avais pas intégré le fait que ces scripts devaient fonctionner comme des fonctions communes. J'ai de plus bloqué sur la manière de coder ce fonctionnement. Malgré ces difficultés, mes scripts sont fonctionnels)
 
-Pour cela il a fallut ajouter plusieurs classes :
-* AddScript
-* DelScript
+Pour cela il a fallut ajouter les classes : Addscript, DelScript et RunScript
 
-Ainsi qu'apporter des modifications dans la classe :
-* Environment
+Classe AddScript : 
 
+```java
+public class AddScript implements Command
+{
+	private Environment environment;
+
+
+	public AddScript(Environment environment) 
+	{
+		this.environment = environment;
+	}
+	
+	@Override
+	public Expr run(Reference receiver, ExprList method) 
+	{
+		if(receiver.getScriptByName(method.get(2).toString())!=null)
+		{
+			System.out.println("Le script " + method.get(2).toString() + " est déjà utilisé");
+			return null;
+		}
+		receiver.addScript(method.get(2).toString(), (ExprList)method.get(3));
+		
+		System.out.println("Ajout du script " + method.get(2).toString() + ": " + method.get(3).toString());
+		return null;
+	}
+	
+	
+}
+```
+
+Classe DelScript : 
+
+```java
+public class DelScript implements Command
+{
+	
+	Environment environment;
+	
+	public DelScript(Environment environment) 
+	{
+		this.environment = environment;
+	}
+	
+	@Override
+	public Expr run(Reference receiver, ExprList method) 
+	{
+		if(receiver.getScriptByName(method.get(2).toString())==null)
+		{
+			System.out.println("le script " + method.get(2).toString() + "n'existe pas dans "+ method.get(0).toString());
+			return null;
+		}
+		receiver.delScriptbyName(method.get(2).toString());
+		System.out.println("suppression du script " + method.get(2).toString());
+		return null;
+	}
+}
+```
+
+Classe RunScript : 
+
+```java
+public class RunScript implements Command
+{
+	public Environment environment;
+
+	//Hashmap of the arguments
+	public Map<String, String> args = new HashMap<String, String>();
+	
+	
+	public RunScript(Environment environment) 
+	{
+		this.environment = environment;
+	}
+	
+	
+	private ExprList convertArgs(ExprList el)
+	{
+		//Pour chaque expression de el
+		for(int i = 0; i< el.size(); i++)
+		{
+			//On récupère l'expression dans la liste d'expression
+			Expr e = el.get(i);
+			
+			
+			//Si l'expression se révèle être une liste d'expressions (contient plus qu'un élément), on rapelle la méthode 
+			if(e instanceof ExprList)
+			{
+				//Cette expression est égale à l'appel de la methode changeMethod
+				el.set(i, this.convertArgs((ExprList)e));
+			}
+			else
+			{
+				String s = new String("");
+				
+				//On vérifie si l'expression est une expression pointée
+				String[] arrOfStr = e.toString().split("\\.");
+				
+				
+				//Si l'expression est une expression pointée, on la convertit une listExpression contenant les 	expression séparées
+				if(arrOfStr.length>1)
+				{
+					//Création de la nouvelle expression
+					
+					//On modifie les valeurs des arguments existants dans la liste chainée en regrdant dans le Hashmap d'arguments
+					
+					//On recrée une expression avec les valeurs des arguments
+					
+					String stock = "";
+					
+					//On vérifie si le premier élément est un argument
+					stock = this.args.get(arrOfStr[0]);
+					
+					//Si il est un argument
+					if(stock!=null)
+					{
+						//On ajoute sa valeur à la string s
+						s += stock;
+					}
+					else
+					{
+						//Sinon a on ajoute l'expression de base à la string s
+						s += arrOfStr[0].toString();
+					}
+					
+					
+					for(int j=1; j<arrOfStr.length; j++)
+					{
+						//On refait la mêm echose que au dessus sauf que nous ajoutons le caractère '.' à l'élement que nous concatenons pour recréer la liste chainée
+						stock = this.args.get(arrOfStr[j]);
+						if(stock!=null)
+						{
+							s += ("." + stock);
+						}
+						else
+						{
+							s += ("." + arrOfStr[j].toString());
+						}
+						
+						
+					}
+					
+					//On modifie la liste d'expression
+					el.set(i,fromStringToExpr(s));
+				}
+				//Si ce n'est pas une expression pointée
+				else
+				{
+					//On vérifie si celle-ci est un des arguments du script
+
+					s = this.args.get(e.toString());
+					
+					//Si il l'est on change l'argument par sa valeur
+					if(s!=null)
+					{		
+						e = fromStringToExpr(s);	
+					}
+					el.set(i,e);
+				}
+				
+				
+			}
+			
+			
+		}
+		return el;
+	}
+	
+	//Permet de convertir une chaîne de caractère en expression
+	private Expr fromStringToExpr(String s)
+	{
+		//LispParser permettant de convertir la string en expr
+		LispParser parser = new LispParser(s);
+		Expr e = null;
+		try 
+		{	//Conversion
+			e = parser.parseExpr();
+		} catch (Exception e1) 
+		{
+			e1.printStackTrace();
+		}
+		
+		//Renvoie de l'expression
+		return e;
+		
+	}
+	@Override
+	public Expr run(Reference receiver, ExprList method) 
+	{
+		//Iterator pour parcourir l'expression;
+		
+		
+		ExprList script = receiver.getScriptByName(method.get(1).toString());
+		if(script ==null)
+		{
+			System.out.println("Le script " + method.get(1).toString() + " n'existe pas" );
+			return null;
+		}
+		
+		//Itérateur pour récupérer les valeurs souhaitées 
+		Iterator<Expr> it = script.iterator();
+			
+		//Si il n'y a rien dans le script
+		if(!it.hasNext())
+		{
+			System.out.println("Le script est vide");
+			return null;
+		}
+
+		// Liste des arguments entrés par l'utilisateur
+		ExprList callArgs = new ExprList();
+		
+		//Ajout du receiver comme premier argument du script
+		callArgs.add(method.get(0));
+		
+		//On récupère les autres arguments entrées lors de l'appel du script 
+		for(int i=2; i<method.size(); i++)
+		{
+			callArgs.add(method.get(i));
+		}
+		
+		//On récupère les arguments originaux du script
+		ExprList scriptArgList = (ExprList) it.next();
+		
+		
+		//Si le nombre d'argument donnée par l'utilisateur ne correspond pas au nombre d'arguments attendus par le script
+		if(callArgs.size()!= scriptArgList.size())
+		{
+			System.out.println("Mauvais nombre d'argument lors de l'appel du script " + method.get(1).toString());
+			return null;
+		}
+		
+		
+		//On met dans le hashmap les arguments
+		for(int i = 0; i< callArgs.size(); i++)
+		{
+			this.args.put(scriptArgList.get(i).toString(), callArgs.get(i).toString());
+		}
+				
+		//Si il n'y aucune commande dans le script
+		if(!it.hasNext())
+		{
+			System.out.println("Le script n'as pas de commandes");
+			return null;
+		}
+		
+		
+		//On récupère les commandes
+		ExprList commandes = (ExprList) it.next();
+		
+		
+		//On modifie les commandes du script en changeant les noms des arguments par leur valeur		
+		
+		commandes = this.convertArgs(commandes);
+		
+		for(Expr e : commandes)
+		{
+			new Interpreter().compute(environment, (ExprList)e);
+		}
+		
+		return null;
+	}
+		
+	
+}
+```
