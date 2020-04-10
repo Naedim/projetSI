@@ -2,7 +2,7 @@
 Développement d’un langage spécifique pour des animations graphiques simples 
 *******************
 + [Exercice 1 : Prise en main du projet ](#exercice-1-prise-en-main-du-projet)
-+ [Exercice 2 : Intepréteur de script V1](#Interpreteur-de-script-V1)
++ [Exercice 2 : Intepréteur de script V1](#exercice-2-intepr%C3%A9teur-de-script-v1)
   + [Exercice 2.1 : Script de configuration](#exercice-2-1-script-de-configuration)
   + [Exercice 2.2 : Script d'animation](#exercice-2-2-script-danimation)
 + [Exercice 3 : Introductio...n des commandes](#exercice-3-introduction-des-commandes)
