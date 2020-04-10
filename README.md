@@ -28,13 +28,13 @@ Développement d’un langage spécifique pour des animations graphiques simples
 Aucune difficulté n'a été rencontré lors de cet exercice.
 *******************
 ## Exercice 2 Intepréteur de script V1
-Dans le programme, un script est représenté come une expression parenthésée appelée S-expression.
+Exécution d'un script sous forme d'expressions parenthèsées
 
 (Pas de difficultés rencontrées)
 
-## Exercice 2-1 Script de configuration
+## Exercice 2-1 Script d'initialisation de l'environnement 
 
-Le script que l'on utilisera ici sera :
+Script utilisé : 
 
 ```
 - (script (space color black) (robi color yellow) )
@@ -45,13 +45,18 @@ Le script que l'on utilisera ici sera :
 
 ## Exercice 2-2 Script d'animation
 
-Le script que l'on utilisera ici sera :
+Script utilisé
+
+Initialisation de l'environnement comme vu prédément
 
 ```
-- (script (space color white)(robi color red)(robi translate 10 0)(space sleep 100)(robi translate 0 10)(space sleep 100)(robi (translate -10 0)(space sleep 100)(robi translate 0 -10) )
+- (script (space color white) (robi color red) )
 ```
 
-La partie du script bougeant robi est lancé en boucle pour une bonne visualisation du résultat
+Animation de robi (script lancé dans une boucle)
+```
+- (script (robi translate 10 0) (space sleep 100) (robi translate 0 10) (space sleep 100) (robi translate -10 0) (space sleep 100) (robi translate 0 -10) (space sleep 100))
+```
 **Resultat de l'execution du script**
 
 ![Exercice-2-2-Resultat](https://github.com/Naedim/projetSI/blob/master/ex2_2.gif)
