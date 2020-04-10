@@ -34,8 +34,6 @@ Exécution d'un script sous forme d'expressions parenthèsées
 
 ## Exercice 2-1 Script d'initialisation de l'environnement 
 
-Script utilisé : 
-
 ```
 - (script (space color black) (robi color yellow) )
 ```
@@ -44,8 +42,6 @@ Script utilisé :
 ![Exercice-2-1-Resultat](https://github.com/Naedim/projetSI/blob/master/ex2_1.JPG)
 
 ## Exercice 2-2 Script d'animation
-
-Script utilisé
 
 Initialisation de l'environnement comme vu prédément
 
@@ -63,31 +59,35 @@ Animation de robi (script lancé dans une boucle)
 
 *******************
 ## Exercice 3 mise en place des classes commandes
-Dans cet exercice il a fallut mettre en place les classes qui mettent en œuvre l'interface *Command*.
+Ici, on organise les actions à éffectuer lors de la lecture du script en les regroupant dans des classes "commandes..."
 
 (Pas de difficultés rencontrées)
 
-Quatres classes on donc été ajouté : 
+2 classes gérant le changement de couleur et de position de Robi :
   * RobiChangeColor
   * RobiTranslate
+  
+2 classes gérant le changement de couleur et la mise en pause du space:  
   * SpaceChangeColor
   * SpaceSleep
   
 **Classe RobiChangeColor**
-```
-public class RobiChangeColor implements Command{
-	Color newColor;
+```java 
+public class RobiChangeColor implements Command
+{
 	GRect robi;
-	public RobiChangeColor(Color c, GRect r)
+	Color newColor;
+	public RobiChangeColor(GRect robi, Color newColor) 
 	{
-		this.newColor = c;
-		this.robi = r;
+	
+		this.robi = robi;
+		this.newColor = newColor;
 	}
+	
 	@Override
 	public void run()
 	{
-		/*Changer la couleur de robi*/
-		robi.setColor(newColor);
+		this.robi.setColor(this.newColor);
 	}
 }
 ```
