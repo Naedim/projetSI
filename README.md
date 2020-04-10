@@ -14,7 +14,7 @@ Développement d’un langage spécifique pour des animations graphiques simples
 *******************
 ## Exercice 1 Prise en main du projet
 
-__L'objet était de :__
+**But de l'exercice:**
   * Déplacer robi jusqu'au bord droit
   * Déplacement jusqu'au bord bas
   * Déplacement jusqu'au bord gauche
@@ -148,7 +148,7 @@ public class SpaceSleep implements Command{
 -(script (space sleep 10000)(space color blue) (robi color green) (robi translate 10 0) (space sleep 100) (robi translate 0 10) (space sleep 100) (robi translate -10 0) (space sleep 100) (robi translate 0 -10) )
 ```
 
-**Resultat de l'execution du script**
+**Resultat de l'exécution du script**
 
 ![Exercice-3-Resultat](https://github.com/YannAlbouy/home/blob/master/Exercice-3.gif "resultat-3")
 *******************
