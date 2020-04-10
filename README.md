@@ -175,20 +175,74 @@ Animation de robi (script lancé dans une boucle)
 *******************
 ## Exercice 4 Selection et execution des commandes
 
-Ajout d'un interpreteur pour faciliter l'utilisation du programme
-
-Aucune difficulté n'a été rencontré lors de cet exercice, mis a part un petit blocage lors ddu 4.4, cependant il à été reussi.
+Evolution de la structure du projet
+(Pas de difficultés rencontrées)
 
 ## Exercice 4-1 Réferencement des objets et enregistrement des commandes
-Ajout des classes *References* et *Environment*, avec les differentes methodes.
-* Reference
-	* getCommandByName
-	* addCommand
-	* Expr run
+Ajout des classes *References* et *Environment*
+* Reference : 
+```java
+public class Reference implements Expr
+{
+	HashMap<String, Command> commandList = new HashMap<String, Command>();
+	
+	Object receiver;
+	
+	
+	public Reference(Object receiver)
+	{
+		this.receiver = receiver;
+	}
+	
+	public Command getCommandeByName(String selector)
+	{
+		
+		return this.commandList.get(selector);
+		
+	}
+	
+	public void addCommand(String selector, Command primitive)
+	{
+		this.commandList.put(selector, primitive);
+	}
+	
+	public Expr run(ExprList method)
+	{
+		Command c = this.getCommandeByName(method.get(1).toString());
+		c.run(this.receiver, method);
+		return null;	
+	}
+
+	@Override
+	public String getValue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+}
+```
+
 * Environment
-	* addReference
-	* delReference
-	* getReferenceByName
+```java
+public class Environment 
+{
+	public Environment()
+	{
+	}
+	private HashMap<String, Reference> referencesList = new HashMap<String, Reference>();
+	
+	public void addReference(String name, Reference r)
+	{
+		referencesList.put(name, r);
+	}
+	
+	public Reference getReferenceByName(String name)
+	{
+		return(referencesList.get(name));		
+	}
+}
+```
 
 **Methode Run de Reference**
 
