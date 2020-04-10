@@ -54,7 +54,7 @@ Le script que l'on utilisera ici sera :
 La partie du script bougeant robi est lancé en boucle pour une bonne visualisation du résultat
 **Resultat de l'execution du script**
 
-![Exercice-2-2-Resultat](https://github.com/YannAlbouy/home/blob/master/Exercice-2-2.gif "resultat-2-2")
+![Exercice-2-2-Resultat](https://github.com/Naedim/projetSI/blob/master/ex2_2.gif)
 
 *******************
 ## Exercice 3 Introduction des commandes
