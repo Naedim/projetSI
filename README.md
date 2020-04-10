@@ -176,10 +176,12 @@ Animation de robi (script lancé dans une boucle)
 ## Exercice 4 Selection et execution des commandes
 
 Evolution de la structure du projet
-(Pas de difficultés rencontrées)
 
 ## Exercice 4-1 Réferencement des objets et enregistrement des commandes
 Ajout des classes *References* et *Environment*
+
+(Pas de difficultés rencontrées)
+
 * Reference : 
 ```java
 public class Reference implements Expr
@@ -252,11 +254,13 @@ Commandes exécutées
 - (space sleep 2000)
 - (robi setColor black)
 ```
-#Exécution des commandes : 
+**Resultat lors des commandes**
 ![Exercice-4-1-Resultat](https://github.com/Naedim/projetSI/blob/master/ex4_1.gif)
 
 ## Exercice 4-2 Ajout et suppression dynamique d'éléments graphiques
+
 Ajout des classes AddElement, DelElement, NewImage, NewString, NewElement
+(Pas de difficultés rencontrées)
 
 AddElement : 
 ```java
@@ -448,13 +452,35 @@ Commandes d'exécution
 ## Exercice 4-3 Ajouter des éléments à des conteneurs
 
 Modification du travail précédent pour nos GContainers puissent désormais contenir d'autres GContainers
-**Resultat lors de l'execution du script**
+(difficultés rencontrées lors de la mise en place de la suppression récursive de GContainer. Résolution du problème en créant une classe ContentManagement dont hérite la classe Référence, cette classe permet de mémoriser et récupérer facilement les éléments contenus dans un GContainer, utile pour la suppression récursive). 
+
+
+Classe ContentManagement : 
+
+```java
+public abstract class ContentManagement 
+{
+	String[] content = new String[0];
+	
+	public void addContent(String element)
+	{
+		content = Arrays.copyOf(content, content.length+1);
+		content[content.length-1] = element;
+	}
+	
+	public String[] getContent()
+	{
+		return this.content;
+	}
+}
+```
+**Resultat lors de l'execution des commandes**
 
 ![Exercice-4-3-Resultat](https://github.com/Naedim/projetSI/blob/master/ex4_3.gif)
 
 ## Exercice 4-4 Création et exécution de scripts
 
-Dans cette partie il fallait pouvoir créer et enregistrer des scripts afin de pouvoir les ré-utiliser quand on le souhaite.
+Mise en place de la possibilité d'exécution de scripts prenant en compte des para
 
 J'ai rencontré des difficultés pour l'execution des scripts.
 
