@@ -244,9 +244,9 @@ public class Environment
 }
 ```
 
-Script exécuté
+Commandes exécutées
 
-```String
+```
 - (space setColor red) 
 - (robi translate 25 25) 
 - (space sleep 2000)
@@ -255,12 +255,114 @@ Script exécuté
 
 
 ## Exercice 4-2 Ajout et suppression dynamique d'éléments graphiques
-Pour cette partie il a fallu créer plusieurs classes :
-* AddElement
-* DelElement
-* NewImage
-* NewString
-* NewElement
+Ajout des classes AddElement, DelElement, NewImage, NewString, NewElement
+
+AddElement : 
+```java
+public class AddElement implements Command {
+
+	Environment environment;
+	
+	public AddElement(Environment environment) {
+		this.environment = environment;
+	}
+
+	@Override
+	public Expr run(Reference receiver, ExprList method)
+    {
+		//Récupération du receiver
+        Object o = receiver.getReceiver();
+        
+        //Si l'objet est bien 
+        if(o instanceof GSpace)
+        {
+            GSpace space = (GSpace) o;
+            Reference nr = (Reference) new Interpreter().compute(this.environment, (ExprList) method.get(3));
+            
+            Object o2 = nr.getReceiver();
+            if(o2 != null)
+            {           	        	
+            	if(o2 instanceof GElement)
+                {
+                    GElement e = (GElement) o2;
+                    environment.addReference(method.get(2).toString(), nr);
+                    space.addElement(e);
+                    space.repaint();
+                }
+            }
+            
+        }
+        
+
+        return receiver;
+    }
+
+}
+```
+DelElement : 
+```java
+public Expr run(Reference reference, ExprList method) 
+{
+	//Récupère l'élement dans lequel on souhaite supprimer des éléments
+	Object o = reference.getReceiver();
+
+	//Si l'objet est bien un GSpace(le seul élément dans lequel on peut supprimer d'autres éléments pour le moment)
+        if(o instanceof GSpace) 
+        {
+        	//On convertit l'objet en GSpace
+            GSpace space = (GSpace)o;
+            
+            //On récupère la référence de l'objet visé dans l'expression)
+            Reference ref = this.environment.getReferenceByName(method.get(2).getValue());
+            
+            //On récupère l'élément à supprimer
+            Object objet = ref.getReceiver();
+            
+            //Si l'objet est bien un GElement
+            if(objet instanceof GElement) 
+            {
+            	//On le convertir en GElement
+                GElement ge = (GElement)objet;
+                //On supprime l'élément dans space
+                space.removeElement(ge);
+                //On supprime la référence de l'objet supprimé dans l'environnement
+                this.environment.delReference(method.get(2).getValue());
+                //On actualise la vue
+                space.repaint();
+            }
+        }
+        //On retourne l'expression
+		return method;
+}
+```
+
+NewImage : 
+```java
+public Expr run(Reference receiver, ExprList method) 
+{
+	try
+	{
+		//Récupérationd de l'image dont le chemin a été donnée dans l'expression methode
+		Image image = ImageIO.read(new File(method.get(2).toString()));
+
+		//Création de l'élément GImage avec l'image récupérée
+		GImage img = new GImage(image);
+
+		//Création de la référence de la GImage
+		Reference ref = new Reference(img);
+
+		//Ajout de la possibilité d'utiliser la commande "translate" pourla GImage crée
+			ref.addCommand("translate", (Command) new TranslateElement());
+		return ref;
+    	}
+    	catch (IOException e)
+    	{
+		e.printStackTrace();
+    	}
+	return method;
+}
+```
+
 
 **Execution d'un script et resultat**
 ```diff
