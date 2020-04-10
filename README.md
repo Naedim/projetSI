@@ -36,7 +36,7 @@ Aucune difficulté n'a été rencontré lors de cet exercice.
 
 Le script que l'on utilisera ici sera :
 
-```diff
+```
 - (script (space color black) (robi color yellow) )
 ```
 **Resultat de l'execution du script**
@@ -47,7 +47,7 @@ Le script que l'on utilisera ici sera :
 
 Le script que l'on utilisera ici sera :
 
-```diff
+```
 - (script (space color white)(robi color red)(robi translate 10 0)(space sleep 100)(robi translate 0 10)(space sleep 100)(robi (translate -10 0)(space sleep 100)(robi translate 0 -10) )
 ```
 
