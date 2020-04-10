@@ -259,111 +259,171 @@ Ajout des classes AddElement, DelElement, NewImage, NewString, NewElement
 
 AddElement : 
 ```java
-public class AddElement implements Command {
+public class AddElement implements Command 
+{
 
 	Environment environment;
 	
-	public AddElement(Environment environment) {
+	public AddElement(Environment environment) 
+	{
 		this.environment = environment;
 	}
 
 	@Override
 	public Expr run(Reference receiver, ExprList method)
-    {
+    	{
 		//Récupération du receiver
-        Object o = receiver.getReceiver();
+        	Object o = receiver.getReceiver();
         
-        //Si l'objet est bien 
-        if(o instanceof GSpace)
-        {
-            GSpace space = (GSpace) o;
-            Reference nr = (Reference) new Interpreter().compute(this.environment, (ExprList) method.get(3));
+        	//Si l'objet est bien 
+        	if(o instanceof GSpace)
+        	{
+            		GSpace space = (GSpace) o;
+            		Reference nr = (Reference) new Interpreter().compute(this.environment, (ExprList) method.get(3));
             
-            Object o2 = nr.getReceiver();
-            if(o2 != null)
-            {           	        	
-            	if(o2 instanceof GElement)
-                {
-                    GElement e = (GElement) o2;
-                    environment.addReference(method.get(2).toString(), nr);
-                    space.addElement(e);
-                    space.repaint();
-                }
-            }
+			Object o2 = nr.getReceiver();
+            		if(o2 != null)
+			{           	        	
+            			if(o2 instanceof GElement)
+                		{
+                    			GElement e = (GElement) o2;
+                    			environment.addReference(method.get(2).toString(), nr);
+                    			space.addElement(e);
+                    			space.repaint();
+                		}
+			}	
             
-        }
-        
-
-        return receiver;
-    }
+        	}
+     
+        	return receiver;
+    	}
 
 }
 ```
 DelElement : 
 ```java
-public Expr run(Reference reference, ExprList method) 
+public class DelElement implements Command 
 {
-	//Récupère l'élement dans lequel on souhaite supprimer des éléments
-	Object o = reference.getReceiver();
+	private Environment environment;
+	public DelElement(Environment environment) 
+	{
+		this.environment = environment;
+	}
 
-	//Si l'objet est bien un GSpace(le seul élément dans lequel on peut supprimer d'autres éléments pour le moment)
-        if(o instanceof GSpace) 
-        {
-        	//On convertit l'objet en GSpace
-            GSpace space = (GSpace)o;
+	@Override
+	public Expr run(Reference reference, ExprList method) 
+	{
+		//Récupère l'élement dans lequel on souhaite supprimer des éléments
+		Object o = reference.getReceiver();
+		
+		//Si l'objet est bien un GSpace(le seul élément dans lequel on peut supprimer d'autres éléments pour le moment)
+        	if(o instanceof GSpace) 
+        	{
+        		//On convertit l'objet en GSpace
+           		 GSpace space = (GSpace)o;
             
-            //On récupère la référence de l'objet visé dans l'expression)
-            Reference ref = this.environment.getReferenceByName(method.get(2).getValue());
+           		 //On récupère la référence de l'objet visé dans l'expression)
+           		 Reference ref = this.environment.getReferenceByName(method.get(2).getValue());
             
-            //On récupère l'élément à supprimer
-            Object objet = ref.getReceiver();
+            		//On récupère l'élément à supprimer
+            		Object objet = ref.getReceiver();
             
-            //Si l'objet est bien un GElement
-            if(objet instanceof GElement) 
-            {
-            	//On le convertir en GElement
-                GElement ge = (GElement)objet;
-                //On supprime l'élément dans space
-                space.removeElement(ge);
-                //On supprime la référence de l'objet supprimé dans l'environnement
-                this.environment.delReference(method.get(2).getValue());
-                //On actualise la vue
-                space.repaint();
-            }
-        }
-        //On retourne l'expression
+            		//Si l'objet est bien un GElement
+		    	if(objet instanceof GElement) 
+		    	{
+				//On le convertir en GElement
+				GElement ge = (GElement)objet;
+				//On supprime l'élément dans space
+				space.removeElement(ge);
+				//On supprime la référence de l'objet supprimé dans l'environnement
+				this.environment.delReference(method.get(2).getValue());
+				//On actualise la vue
+				space.repaint();
+            		}
+        	}
+        	//On retourne l'expression
 		return method;
+	}
 }
 ```
 
 NewImage : 
 ```java
-public Expr run(Reference receiver, ExprList method) 
+public class NewImage implements Command 
 {
-	try
+
+	@Override
+	public Expr run(Reference receiver, ExprList method) 
 	{
-		//Récupérationd de l'image dont le chemin a été donnée dans l'expression methode
-		Image image = ImageIO.read(new File(method.get(2).toString()));
+		try
+	    	{
+			//Récupérationd de l'image dont le chemin a été donnée dans l'expression methode
+			Image image = ImageIO.read(new File(method.get(2).toString()));
 
-		//Création de l'élément GImage avec l'image récupérée
-		GImage img = new GImage(image);
+			//Création de l'élément GImage avec l'image récupérée
+			GImage img = new GImage(image);
 
-		//Création de la référence de la GImage
-		Reference ref = new Reference(img);
+			//Création de la référence de la GImage
+			Reference ref = new Reference(img);
 
-		//Ajout de la possibilité d'utiliser la commande "translate" pourla GImage crée
+			//Ajout de la possibilité d'utiliser la commande "translate" pourla GImage crée
 			ref.addCommand("translate", (Command) new TranslateElement());
-		return ref;
-    	}
-    	catch (IOException e)
-    	{
-		e.printStackTrace();
-    	}
-	return method;
+			return ref;
+	    	}
+	    	catch (IOException e)
+	    	{
+			e.printStackTrace();
+	    	}
+		
+		return method;
+
+   	 }
+
 }
 ```
+NewString :
+```java
+public class NewString implements Command 
+{
 
+	@Override
+	public Expr run(Reference receiver, ExprList method) 
+	{
+		//Création de lz GString avec ce qu'a marqué l'utilisateur
+	   	 GString s = new GString(method.get(2).getValue());
+	    
+	   	 //Créationd e la référence de la strin crée
+		Reference ref = new Reference(s);
+		
+		//Ajout de la pssibilité d'utiliser les commandes "translate" et "setColor" pour la GString crée
+		ref.addCommand("translate", (Command) new TranslateElement());
+		ref.addCommand("setColor", new SetColor());
+		return ref;
+    	}
+}
 
+```
+NewElement : 
+```java
+class NewElement implements Command 
+{
+	public Expr run(Reference reference, ExprList method) 
+	{
+		try {
+			@SuppressWarnings("unchecked")
+			GElement e = ((Class<GElement>) reference.getReceiver()).getDeclaredConstructor().newInstance();
+			Reference ref = new Reference(e);
+			ref.addCommand("setColor", new SetColor());
+			ref.addCommand("translate", (Command) new TranslateElement());
+			ref.addCommand("setDim", new SetDim());
+			return ref;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+}
+```
 **Execution d'un script et resultat**
 ```diff
 -(space add robi (rect.class new)) (robi translate 130 50)(robi setColor yellow)(space add momo (oval.class new))(momo setColor red)(momo translate 80 80)(space add pif (image.class new alien.gif))(pif translate 100 0)(space add hello (label.class new "Hello world"))(hello translate 10 10)(hello setColor black)
